@@ -1,0 +1,44 @@
+# --- Entorno virtual ---
+venv/
+env/
+.venv/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+
+# --- Configuración local / credenciales de conexión a SQL Server ---
+# Si guardan el usuario/password o el connection string de pyodbc en un
+# archivo aparte (recomendado, para no subirlo al repo), ignórenlo aquí.
+.env
+config_local.py
+db_config_local.py
+
+# --- Qt / PySide6 ---
+# Los .ui de Qt Designer SÍ se versionan. Si alguien genera manualmente un
+# .py suelto desde un .ui como archivo temporal de prueba, descoméntenlo:
+# ui_*.py
+*.qmlc
+*.jsc
+
+# --- Builds / empaquetado (si en algún momento generan un .exe) ---
+build/
+dist/
+*.spec
+
+# --- Caches de herramientas ---
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# --- Editores / IDEs ---
+.vscode/
+.idea/
+
+# --- Sistema operativo ---
+Thumbs.db
+desktop.ini
+.DS_Store
