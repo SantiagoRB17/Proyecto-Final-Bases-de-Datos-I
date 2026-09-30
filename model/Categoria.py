@@ -1,4 +1,4 @@
-python -m venv .venvclass Categoria:
+class Categoria:
     def __init__(self, IDCategoria=None, CatNombre="", CatDescripcion=""):
         self.IDCategoria = IDCategoria
         self.CatNombre = CatNombre
