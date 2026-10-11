@@ -1,6 +1,6 @@
 class Usuario:
-    # UsrContrasena siempre debe contener el hash (nunca la contraseña en
-    # texto plano); el hashing lo hace UsuarioService, no esta clase.
+    # UsrContrasena guarda siempre el hash, nunca la contraseña en texto plano;
+    # el hash lo calcula UsuarioService, no esta clase.
     def __init__(self, IDUsuario=None, UsrNombreUsuario="",UsrContrasena="", UsrNombres="", UsrApellidos="", UsrEstado=True, IDTipoUsuario=None):
         self.IDUsuario = IDUsuario
         self.UsrNombreUsuario = UsrNombreUsuario

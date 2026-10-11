@@ -1,6 +1,6 @@
 class Bitacora:
-    # BitFechaSalida y BitHoraSalida quedan en None mientras el usuario sigue
-    # dentro del sistema; se completan al momento del logout.
+    # BitFechaSalida y BitHoraSalida son None mientras la sesión sigue abierta;
+    # se completan al cerrar sesión.
     def __init__(self, IDBitacora=None, IDUsuario=None, BitFechaIngreso=None, BitHoraIngreso=None, BitFechaSalida=None, BitHoraSalida=None):
         self.IDBitacora = IDBitacora
         self.IDUsuario = IDUsuario
