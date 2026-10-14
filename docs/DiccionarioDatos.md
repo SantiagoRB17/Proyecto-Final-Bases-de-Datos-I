@@ -90,14 +90,3 @@ fuente. Datos iniciales: Administrador, Tradicional (paramétrico), Esporádico.
 | BitHoraIngreso | TIME | NO | | Hora de inicio de sesión |
 | BitFechaSalida | DATE | SI | | Fecha de cierre de sesión (NULL mientras sigue conectado) |
 | BitHoraSalida | TIME | SI | | Hora de cierre de sesión (NULL mientras sigue conectado) |
-
-## Notas
-
-- `UsrContrasena` se dejó en VARCHAR(255) para que alcance cualquier hash
-  (con `hashlib.sha256` seria de 64 caracteres, pero 255 da margen si luego
-  usan algo con salt o un algoritmo más largo).
-- El tipo de usuario se modela como tabla `TipoUsuario` (decisión del
-  profesor: en un curso de bases de datos lo correcto es hacerlo "estilo BD"
-  y no con un enum, porque permite agregar roles sin tocar el código).
-- Todos los precios (`ProdPrecio`, `DePrecioProveedor`) quedaron en
-  `DECIMAL(10,2)` (hasta 99,999,999.99)
