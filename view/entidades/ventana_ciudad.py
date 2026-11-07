@@ -60,6 +60,10 @@ class VentanaCiudad(QDialog, Ui_VentanaCiudad):
         self.txtNombre.setFocus()
 
     def agregar(self):
+        if self.id_seleccionado is not None:
+            QMessageBox.warning(self, "Ciudades",
+                                "Presione Nuevo para registrar otra ciudad, o Editar para guardar los cambios.")
+            return
         ciudad = self._leer_formulario()
         if ciudad is None:
             return

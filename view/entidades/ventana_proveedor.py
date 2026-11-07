@@ -87,6 +87,10 @@ class VentanaProveedor(QDialog, Ui_VentanaProveedor):
         self.txtNit.setFocus()
 
     def agregar(self):
+        if self.id_seleccionado is not None:
+            QMessageBox.warning(self, "Proveedores",
+                                "Presione Nuevo para registrar otro proveedor, o Editar para guardar los cambios.")
+            return
         proveedor = self._leer_formulario()
         if proveedor is None:
             return

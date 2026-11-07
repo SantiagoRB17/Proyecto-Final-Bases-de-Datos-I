@@ -84,6 +84,10 @@ class VentanaProducto(QDialog, Ui_VentanaProducto):
         self.txtNombre.setFocus()
 
     def agregar(self):
+        if self.id_seleccionado is not None:
+            QMessageBox.warning(self, "Productos",
+                                "Presione Nuevo para registrar otro producto, o Editar para guardar los cambios.")
+            return
         producto = self._leer_formulario()
         if producto is None:
             return
@@ -114,6 +118,9 @@ class VentanaProducto(QDialog, Ui_VentanaProducto):
         id_categoria = self.cmbCategoria.currentData()
         if not nombre:
             QMessageBox.warning(self, "Productos", "Escriba el nombre del producto.")
+            return None
+        if self.spnPrecio.value() <= 0:
+            QMessageBox.warning(self, "Productos", "El precio debe ser mayor que cero.")
             return None
         if id_categoria is None:
             QMessageBox.warning(self, "Productos", "Primero debe registrar una categoría.")
