@@ -1,6 +1,7 @@
 from PySide6.QtWidgets import QMainWindow, QMessageBox
 
 from service.UsuarioService import UsuarioService
+from view.entidades.ventana_ciudad import VentanaCiudad
 from view.menu_principal.ui_ventana_menu_principal import Ui_VentanaMenuPrincipal
 
 
@@ -19,8 +20,9 @@ class VentanaMenuPrincipal(QMainWindow, Ui_VentanaMenuPrincipal):
         self.aplicar_permisos()
 
         self.actionSalir.triggered.connect(self.close)
+        self.actionCiudad.triggered.connect(self.abrir_ciudad)
         # Cada opción se conecta a su ventana a medida que se vayan creando.
-        for opcion in (self.actionCiudad, self.actionCategoria, self.actionProducto,
+        for opcion in (self.actionCategoria, self.actionProducto,
                        self.actionProveedor, self.actionProveedorProducto, self.actionConsultas,
                        self.actionReportes, self.actionUsuarios, self.actionBitacora):
             opcion.triggered.connect(self.mostrar_pendiente)
@@ -31,6 +33,9 @@ class VentanaMenuPrincipal(QMainWindow, Ui_VentanaMenuPrincipal):
         self.menuEntidades.setEnabled(puede_modificar)
         self.menuTransacciones.setEnabled(puede_modificar)
         self.menuAuditoria.setEnabled(es_administrador)
+
+    def abrir_ciudad(self):
+        VentanaCiudad(self.sesion).exec()
 
     def mostrar_pendiente(self):
         QMessageBox.information(self, "Pendiente", "Esta ventana todavía no está disponible.")
