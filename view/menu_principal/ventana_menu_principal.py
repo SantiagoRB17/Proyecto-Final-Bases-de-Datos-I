@@ -1,8 +1,15 @@
 from PySide6.QtWidgets import QMainWindow, QMessageBox
 
 from service.UsuarioService import UsuarioService
+from view.auditoria.ventana_bitacora import VentanaBitacora
+from view.auditoria.ventana_usuarios import VentanaUsuarios
+from view.consultas_reportes.ventana_consultas import VentanaConsultas
+from view.entidades.ventana_categoria import VentanaCategoria
 from view.entidades.ventana_ciudad import VentanaCiudad
+from view.entidades.ventana_producto import VentanaProducto
+from view.entidades.ventana_proveedor import VentanaProveedor
 from view.menu_principal.ui_ventana_menu_principal import Ui_VentanaMenuPrincipal
+from view.transacciones.ventana_detalle_proveedor_producto import VentanaDetalleProveedorProducto
 
 
 class VentanaMenuPrincipal(QMainWindow, Ui_VentanaMenuPrincipal):
@@ -21,11 +28,14 @@ class VentanaMenuPrincipal(QMainWindow, Ui_VentanaMenuPrincipal):
 
         self.actionSalir.triggered.connect(self.close)
         self.actionCiudad.triggered.connect(self.abrir_ciudad)
-        # Cada opción se conecta a su ventana a medida que se vayan creando.
-        for opcion in (self.actionCategoria, self.actionProducto,
-                       self.actionProveedor, self.actionProveedorProducto, self.actionConsultas,
-                       self.actionReportes, self.actionUsuarios, self.actionBitacora):
-            opcion.triggered.connect(self.mostrar_pendiente)
+        self.actionCategoria.triggered.connect(self.abrir_categoria)
+        self.actionProducto.triggered.connect(self.abrir_producto)
+        self.actionProveedor.triggered.connect(self.abrir_proveedor)
+        self.actionProveedorProducto.triggered.connect(self.abrir_proveedor_producto)
+        self.actionConsultas.triggered.connect(self.abrir_consultas)
+        self.actionUsuarios.triggered.connect(self.abrir_usuarios)
+        self.actionBitacora.triggered.connect(self.abrir_bitacora)
+        self.actionReportes.triggered.connect(self.mostrar_pendiente)
 
     def aplicar_permisos(self):
         puede_modificar = self.usuario_service.puede_modificar(self.sesion)
@@ -36,6 +46,31 @@ class VentanaMenuPrincipal(QMainWindow, Ui_VentanaMenuPrincipal):
 
     def abrir_ciudad(self):
         VentanaCiudad(self.sesion).exec()
+
+    def abrir_categoria(self):
+        VentanaCategoria(self.sesion).exec()
+
+    def abrir_producto(self):
+        VentanaProducto(self.sesion).exec()
+
+    def abrir_proveedor(self):
+        VentanaProveedor(self.sesion).exec()
+
+    def abrir_proveedor_producto(self):
+        VentanaDetalleProveedorProducto(self.sesion).exec()
+
+    def abrir_consultas(self):
+        # Esta ventana consulta la base de datos desde que se crea.
+        try:
+            VentanaConsultas(self.sesion).exec()
+        except ConnectionError as error:
+            QMessageBox.warning(self, "Consultas", str(error))
+
+    def abrir_usuarios(self):
+        VentanaUsuarios(self.sesion).exec()
+
+    def abrir_bitacora(self):
+        VentanaBitacora(self.sesion).exec()
 
     def mostrar_pendiente(self):
         QMessageBox.information(self, "Pendiente", "Esta ventana todavía no está disponible.")

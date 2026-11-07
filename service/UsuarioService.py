@@ -2,6 +2,7 @@ import hashlib
 from datetime import datetime
 
 from dao.BitacoraDAO import BitacoraDAO
+from dao.ConsultasDAO import ConsultasDAO
 from dao.TipoUsuarioDAO import TipoUsuarioDAO
 from dao.UsuarioDAO import UsuarioDAO
 from model.Bitacora import Bitacora
@@ -13,6 +14,7 @@ class UsuarioService:
         self.usuario_dao = UsuarioDAO()
         self.tipo_usuario_dao = TipoUsuarioDAO()
         self.bitacora_dao = BitacoraDAO()
+        self.consultas_dao = ConsultasDAO()
 
     # Sesión
 
@@ -87,6 +89,14 @@ class UsuarioService:
         if self.es_administrador(id_usuario):
             raise ValueError("El Administrador no se puede eliminar.")
         self.usuario_dao.eliminar(id_usuario)
+
+    def consultar_tipos_usuario(self, usuario_actual):
+        self._exigir_administrador(usuario_actual, "consultar los tipos de usuario")
+        return self.tipo_usuario_dao.consultar_todos()
+
+    def consultar_bitacora(self, usuario_actual):
+        self._exigir_administrador(usuario_actual, "consultar la bitácora")
+        return self.consultas_dao.bitacora_con_usuario_y_rol()
 
     # Métodos internos
 
