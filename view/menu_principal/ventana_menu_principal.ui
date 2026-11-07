@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>VentanaMenuPrincipal</class>
+ <widget class="QMainWindow" name="VentanaMenuPrincipal">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Menú principal</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="layoutCentral">
+    <item>
+     <widget class="QLabel" name="lblBienvenida">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <widget class="QMenu" name="menuEntidades">
+    <property name="title">
+     <string>Entidades</string>
+    </property>
+    <addaction name="actionCiudad"/>
+    <addaction name="actionCategoria"/>
+    <addaction name="actionProducto"/>
+    <addaction name="actionProveedor"/>
+   </widget>
+   <widget class="QMenu" name="menuTransacciones">
+    <property name="title">
+     <string>Transacciones</string>
+    </property>
+    <addaction name="actionProveedorProducto"/>
+   </widget>
+   <widget class="QMenu" name="menuConsultasReportes">
+    <property name="title">
+     <string>Consultas y Reportes</string>
+    </property>
+    <addaction name="actionConsultas"/>
+    <addaction name="actionReportes"/>
+   </widget>
+   <widget class="QMenu" name="menuAuditoria">
+    <property name="title">
+     <string>Auditoría</string>
+    </property>
+    <addaction name="actionUsuarios"/>
+    <addaction name="actionBitacora"/>
+   </widget>
+   <addaction name="menuEntidades"/>
+   <addaction name="menuTransacciones"/>
+   <addaction name="menuConsultasReportes"/>
+   <addaction name="menuAuditoria"/>
+   <addaction name="actionSalir"/>
+  </widget>
+  <action name="actionCiudad">
+   <property name="text">
+    <string>Ciudad</string>
+   </property>
+  </action>
+  <action name="actionCategoria">
+   <property name="text">
+    <string>Categoría</string>
+   </property>
+  </action>
+  <action name="actionProducto">
+   <property name="text">
+    <string>Producto</string>
+   </property>
+  </action>
+  <action name="actionProveedor">
+   <property name="text">
+    <string>Proveedor</string>
+   </property>
+  </action>
+  <action name="actionProveedorProducto">
+   <property name="text">
+    <string>Proveedor - Producto</string>
+   </property>
+  </action>
+  <action name="actionConsultas">
+   <property name="text">
+    <string>Consultas</string>
+   </property>
+  </action>
+  <action name="actionReportes">
+   <property name="text">
+    <string>Reportes</string>
+   </property>
+  </action>
+  <action name="actionUsuarios">
+   <property name="text">
+    <string>Gestión de usuarios</string>
+   </property>
+  </action>
+  <action name="actionBitacora">
+   <property name="text">
+    <string>Bitácora</string>
+   </property>
+  </action>
+  <action name="actionSalir">
+   <property name="text">
+    <string>Salir</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

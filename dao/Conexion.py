@@ -20,4 +20,10 @@ def obtener_conexion():
         f"PWD={CONTRASENA};"
         "TrustServerCertificate=yes;"
     )
-    return pyodbc.connect(cadena_conexion)
+    try:
+        return pyodbc.connect(cadena_conexion)
+    except pyodbc.Error:
+        raise ConnectionError(
+            "No se pudo conectar a la base de datos. "
+            "Verifique que el servicio de SQL Server esté iniciado."
+        )
