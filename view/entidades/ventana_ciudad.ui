@@ -13,9 +13,9 @@
   <property name="windowTitle">
    <string>Ciudades</string>
   </property>
-  <layout class="QVBoxLayout" name="layoutPrincipal">
+  <layout class="QVBoxLayout" name="layoutPrincipal"><property name="spacing"><number>12</number></property><property name="leftMargin"><number>24</number></property><property name="topMargin"><number>20</number></property><property name="rightMargin"><number>24</number></property><property name="bottomMargin"><number>20</number></property><item><widget class="QLabel" name="lblEncabezado"><property name="text"><string>Ciudades</string></property></widget></item>
    <item>
-    <layout class="QFormLayout" name="layoutFormulario">
+    <layout class="QFormLayout" name="layoutFormulario"><property name="horizontalSpacing"><number>14</number></property><property name="verticalSpacing"><number>10</number></property>
      <item row="0" column="0">
       <widget class="QLabel" name="lblNombre">
        <property name="text">
@@ -110,10 +110,10 @@
      </property>
      <property name="selectionBehavior">
       <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
-     </property>
+     </property><property name="alternatingRowColors"><bool>true</bool></property><property name="showGrid"><bool>false</bool></property>
      <attribute name="horizontalHeaderStretchLastSection">
       <bool>true</bool>
-     </attribute>
+     </attribute><attribute name="verticalHeaderVisible"><bool>false</bool></attribute><attribute name="horizontalHeaderDefaultSectionSize"><number>150</number></attribute>
      <column>
       <property name="text">
        <string>ID</string>

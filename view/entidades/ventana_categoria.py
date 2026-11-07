@@ -4,6 +4,7 @@ from dao.CategoriaDAO import CategoriaDAO
 from model.Categoria import Categoria
 from service.UsuarioService import UsuarioService
 from view.entidades.ui_ventana_categoria import Ui_VentanaCategoria
+from view.tema import ajustar_tabla
 
 
 class VentanaCategoria(QDialog, Ui_VentanaCategoria):
@@ -41,6 +42,7 @@ class VentanaCategoria(QDialog, Ui_VentanaCategoria):
             self.tblCategorias.setItem(fila, 0, QTableWidgetItem(str(categoria.IDCategoria)))
             self.tblCategorias.setItem(fila, 1, QTableWidgetItem(categoria.CatNombre))
             self.tblCategorias.setItem(fila, 2, QTableWidgetItem(categoria.CatDescripcion or ""))
+        ajustar_tabla(self.tblCategorias)
 
     def seleccionar_fila(self):
         filas = self.tblCategorias.selectionModel().selectedRows()

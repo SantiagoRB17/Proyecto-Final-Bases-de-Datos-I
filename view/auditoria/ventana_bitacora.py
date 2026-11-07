@@ -4,6 +4,7 @@ from PySide6.QtWidgets import QDialog, QMessageBox, QTableWidgetItem
 
 from service.UsuarioService import UsuarioService
 from view.auditoria.ui_ventana_bitacora import Ui_VentanaBitacora
+from view.tema import ajustar_tabla
 
 
 # Solo lectura: la bitácora la escribe el sistema al entrar y salir, nadie la edita.
@@ -31,6 +32,7 @@ class VentanaBitacora(QDialog, Ui_VentanaBitacora):
         for numero_fila, fila in enumerate(filas):
             for numero_columna, valor in enumerate(fila):
                 self.tblBitacora.setItem(numero_fila, numero_columna, QTableWidgetItem(self._a_texto(valor)))
+        ajustar_tabla(self.tblBitacora)
         self.lblResultados.setText(f"Registros: {len(filas)}")
 
     def _a_texto(self, valor):

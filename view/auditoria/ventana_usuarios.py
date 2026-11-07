@@ -3,6 +3,7 @@ from PySide6.QtWidgets import QDialog, QMessageBox, QTableWidgetItem
 from model.Usuario import Usuario
 from service.UsuarioService import UsuarioService
 from view.auditoria.ui_ventana_usuarios import Ui_VentanaUsuarios
+from view.tema import ajustar_tabla
 
 
 # A diferencia de las entidades simples, esta ventana no usa DAO directamente:
@@ -52,6 +53,7 @@ class VentanaUsuarios(QDialog, Ui_VentanaUsuarios):
             self.tblUsuarios.setItem(fila, 3, QTableWidgetItem(usuario.UsrApellidos))
             self.tblUsuarios.setItem(fila, 4, QTableWidgetItem(rol))
             self.tblUsuarios.setItem(fila, 5, QTableWidgetItem(estado))
+        ajustar_tabla(self.tblUsuarios)
 
     def seleccionar_fila(self):
         filas = self.tblUsuarios.selectionModel().selectedRows()

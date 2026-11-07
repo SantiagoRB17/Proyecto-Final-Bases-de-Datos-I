@@ -5,6 +5,7 @@ from dao.ProveedorDAO import ProveedorDAO
 from model.Proveedor import Proveedor
 from service.UsuarioService import UsuarioService
 from view.entidades.ui_ventana_proveedor import Ui_VentanaProveedor
+from view.tema import ajustar_tabla
 
 
 class VentanaProveedor(QDialog, Ui_VentanaProveedor):
@@ -60,6 +61,7 @@ class VentanaProveedor(QDialog, Ui_VentanaProveedor):
             self.tblProveedores.setItem(fila, 4, QTableWidgetItem(proveedor.ProvTelefono))
             self.tblProveedores.setItem(fila, 5, QTableWidgetItem(proveedor.ProvEmail or ""))
             self.tblProveedores.setItem(fila, 6, QTableWidgetItem(self.cmbCiudad.itemText(indice)))
+        ajustar_tabla(self.tblProveedores)
 
     def seleccionar_fila(self):
         filas = self.tblProveedores.selectionModel().selectedRows()

@@ -26,9 +26,18 @@ class Ui_VentanaProveedor(object):
             VentanaProveedor.setObjectName(u"VentanaProveedor")
         VentanaProveedor.resize(900, 560)
         self.layoutPrincipal = QVBoxLayout(VentanaProveedor)
+        self.layoutPrincipal.setSpacing(12)
         self.layoutPrincipal.setObjectName(u"layoutPrincipal")
+        self.layoutPrincipal.setContentsMargins(24, 20, 24, 20)
+        self.lblEncabezado = QLabel(VentanaProveedor)
+        self.lblEncabezado.setObjectName(u"lblEncabezado")
+
+        self.layoutPrincipal.addWidget(self.lblEncabezado)
+
         self.layoutFormulario = QFormLayout()
         self.layoutFormulario.setObjectName(u"layoutFormulario")
+        self.layoutFormulario.setHorizontalSpacing(14)
+        self.layoutFormulario.setVerticalSpacing(10)
         self.lblNit = QLabel(VentanaProveedor)
         self.lblNit.setObjectName(u"lblNit")
 
@@ -153,7 +162,11 @@ class Ui_VentanaProveedor(object):
         self.tblProveedores.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
         self.tblProveedores.setSelectionMode(QAbstractItemView.SelectionMode.SingleSelection)
         self.tblProveedores.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
+        self.tblProveedores.setAlternatingRowColors(True)
+        self.tblProveedores.setShowGrid(False)
+        self.tblProveedores.horizontalHeader().setDefaultSectionSize(150)
         self.tblProveedores.horizontalHeader().setStretchLastSection(True)
+        self.tblProveedores.verticalHeader().setVisible(False)
 
         self.layoutPrincipal.addWidget(self.tblProveedores)
 
@@ -165,6 +178,7 @@ class Ui_VentanaProveedor(object):
 
     def retranslateUi(self, VentanaProveedor):
         VentanaProveedor.setWindowTitle(QCoreApplication.translate("VentanaProveedor", u"Proveedores", None))
+        self.lblEncabezado.setText(QCoreApplication.translate("VentanaProveedor", u"Proveedores", None))
         self.lblNit.setText(QCoreApplication.translate("VentanaProveedor", u"NIT:", None))
         self.lblNombre.setText(QCoreApplication.translate("VentanaProveedor", u"Nombre:", None))
         self.lblDireccion.setText(QCoreApplication.translate("VentanaProveedor", u"Direcci\u00f3n:", None))

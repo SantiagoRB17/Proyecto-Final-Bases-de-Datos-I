@@ -5,6 +5,7 @@ from dao.ProductoDAO import ProductoDAO
 from model.Producto import Producto
 from service.UsuarioService import UsuarioService
 from view.entidades.ui_ventana_producto import Ui_VentanaProducto
+from view.tema import ajustar_tabla
 
 
 class VentanaProducto(QDialog, Ui_VentanaProducto):
@@ -59,6 +60,7 @@ class VentanaProducto(QDialog, Ui_VentanaProducto):
             self.tblProductos.setItem(fila, 3, QTableWidgetItem(str(producto.ProdPrecio)))
             self.tblProductos.setItem(fila, 4, QTableWidgetItem(str(producto.ProdStock)))
             self.tblProductos.setItem(fila, 5, QTableWidgetItem(self.cmbCategoria.itemText(indice)))
+        ajustar_tabla(self.tblProductos)
 
     def seleccionar_fila(self):
         filas = self.tblProductos.selectionModel().selectedRows()

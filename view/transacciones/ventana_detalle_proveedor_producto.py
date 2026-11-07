@@ -6,6 +6,7 @@ from dao.ProductoDAO import ProductoDAO
 from dao.ProveedorDAO import ProveedorDAO
 from model.DetalleProveedorProducto import DetalleProveedorProducto
 from service.UsuarioService import UsuarioService
+from view.tema import ajustar_tabla
 from view.transacciones.ui_ventana_detalle_proveedor_producto import Ui_VentanaDetalleProveedorProducto
 
 
@@ -64,6 +65,7 @@ class VentanaDetalleProveedorProducto(QDialog, Ui_VentanaDetalleProveedorProduct
             self.tblDetalles.setItem(fila, 1, QTableWidgetItem(producto))
             self.tblDetalles.setItem(fila, 2, QTableWidgetItem(detalle.DeFechaRegistro.strftime("%d/%m/%Y")))
             self.tblDetalles.setItem(fila, 3, QTableWidgetItem(str(detalle.DePrecioProveedor)))
+        ajustar_tabla(self.tblDetalles)
 
     def seleccionar_fila(self):
         filas = self.tblDetalles.selectionModel().selectedRows()

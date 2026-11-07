@@ -26,9 +26,18 @@ class Ui_VentanaUsuarios(object):
             VentanaUsuarios.setObjectName(u"VentanaUsuarios")
         VentanaUsuarios.resize(860, 580)
         self.layoutPrincipal = QVBoxLayout(VentanaUsuarios)
+        self.layoutPrincipal.setSpacing(12)
         self.layoutPrincipal.setObjectName(u"layoutPrincipal")
+        self.layoutPrincipal.setContentsMargins(24, 20, 24, 20)
+        self.lblEncabezado = QLabel(VentanaUsuarios)
+        self.lblEncabezado.setObjectName(u"lblEncabezado")
+
+        self.layoutPrincipal.addWidget(self.lblEncabezado)
+
         self.layoutFormulario = QFormLayout()
         self.layoutFormulario.setObjectName(u"layoutFormulario")
+        self.layoutFormulario.setHorizontalSpacing(14)
+        self.layoutFormulario.setVerticalSpacing(10)
         self.lblNombreUsuario = QLabel(VentanaUsuarios)
         self.lblNombreUsuario.setObjectName(u"lblNombreUsuario")
 
@@ -151,7 +160,11 @@ class Ui_VentanaUsuarios(object):
         self.tblUsuarios.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
         self.tblUsuarios.setSelectionMode(QAbstractItemView.SelectionMode.SingleSelection)
         self.tblUsuarios.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
+        self.tblUsuarios.setAlternatingRowColors(True)
+        self.tblUsuarios.setShowGrid(False)
+        self.tblUsuarios.horizontalHeader().setDefaultSectionSize(150)
         self.tblUsuarios.horizontalHeader().setStretchLastSection(True)
+        self.tblUsuarios.verticalHeader().setVisible(False)
 
         self.layoutPrincipal.addWidget(self.tblUsuarios)
 
@@ -163,6 +176,7 @@ class Ui_VentanaUsuarios(object):
 
     def retranslateUi(self, VentanaUsuarios):
         VentanaUsuarios.setWindowTitle(QCoreApplication.translate("VentanaUsuarios", u"Gesti\u00f3n de usuarios", None))
+        self.lblEncabezado.setText(QCoreApplication.translate("VentanaUsuarios", u"Gesti\u00f3n de usuarios", None))
         self.lblNombreUsuario.setText(QCoreApplication.translate("VentanaUsuarios", u"Usuario:", None))
         self.lblContrasena.setText(QCoreApplication.translate("VentanaUsuarios", u"Contrase\u00f1a:", None))
         self.txtContrasena.setPlaceholderText(QCoreApplication.translate("VentanaUsuarios", u"Obligatoria al crear. Al editar, vac\u00eda conserva la actual.", None))

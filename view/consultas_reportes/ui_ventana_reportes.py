@@ -26,9 +26,18 @@ class Ui_VentanaReportes(object):
             VentanaReportes.setObjectName(u"VentanaReportes")
         VentanaReportes.resize(900, 620)
         self.layoutPrincipal = QVBoxLayout(VentanaReportes)
+        self.layoutPrincipal.setSpacing(12)
         self.layoutPrincipal.setObjectName(u"layoutPrincipal")
+        self.layoutPrincipal.setContentsMargins(24, 20, 24, 20)
+        self.lblEncabezado = QLabel(VentanaReportes)
+        self.lblEncabezado.setObjectName(u"lblEncabezado")
+
+        self.layoutPrincipal.addWidget(self.lblEncabezado)
+
         self.layoutFormulario = QFormLayout()
         self.layoutFormulario.setObjectName(u"layoutFormulario")
+        self.layoutFormulario.setHorizontalSpacing(14)
+        self.layoutFormulario.setVerticalSpacing(10)
         self.lblReporte = QLabel(VentanaReportes)
         self.lblReporte.setObjectName(u"lblReporte")
 
@@ -153,7 +162,11 @@ class Ui_VentanaReportes(object):
         self.tblResultados.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
         self.tblResultados.setSelectionMode(QAbstractItemView.SelectionMode.SingleSelection)
         self.tblResultados.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
+        self.tblResultados.setAlternatingRowColors(True)
+        self.tblResultados.setShowGrid(False)
+        self.tblResultados.horizontalHeader().setDefaultSectionSize(150)
         self.tblResultados.horizontalHeader().setStretchLastSection(True)
+        self.tblResultados.verticalHeader().setVisible(False)
 
         self.layoutPrincipal.addWidget(self.tblResultados)
 
@@ -165,6 +178,7 @@ class Ui_VentanaReportes(object):
 
     def retranslateUi(self, VentanaReportes):
         VentanaReportes.setWindowTitle(QCoreApplication.translate("VentanaReportes", u"Reportes", None))
+        self.lblEncabezado.setText(QCoreApplication.translate("VentanaReportes", u"Reportes", None))
         self.lblReporte.setText(QCoreApplication.translate("VentanaReportes", u"Reporte:", None))
         self.lblProveedor.setText(QCoreApplication.translate("VentanaReportes", u"Proveedor:", None))
         self.lblCiudad.setText(QCoreApplication.translate("VentanaReportes", u"Ciudad:", None))

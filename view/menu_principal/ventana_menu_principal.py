@@ -21,22 +21,26 @@ class VentanaMenuPrincipal(QMainWindow, Ui_VentanaMenuPrincipal):
         self.usuario_service = UsuarioService()
 
         usuario = sesion.usuario
-        self.lblBienvenida.setText(
-            f"Bienvenido, {usuario.UsrNombres} {usuario.UsrApellidos}\n"
-            f"Rol: {sesion.tipo_usuario.TipNombre}"
-        )
+        self.lblBienvenida.setText(f"Bienvenido, {usuario.UsrNombres} {usuario.UsrApellidos}")
+        self.lblRol.setText(sesion.tipo_usuario.TipNombre)
         self.aplicar_permisos()
 
+        # Cada opción se puede abrir desde la barra de menú o desde su tarjeta:
+        # las dos formas llaman al mismo método.
         self.actionSalir.triggered.connect(self.close)
-        self.actionCiudad.triggered.connect(self.abrir_ciudad)
-        self.actionCategoria.triggered.connect(self.abrir_categoria)
-        self.actionProducto.triggered.connect(self.abrir_producto)
-        self.actionProveedor.triggered.connect(self.abrir_proveedor)
-        self.actionProveedorProducto.triggered.connect(self.abrir_proveedor_producto)
-        self.actionConsultas.triggered.connect(self.abrir_consultas)
-        self.actionUsuarios.triggered.connect(self.abrir_usuarios)
-        self.actionBitacora.triggered.connect(self.abrir_bitacora)
-        self.actionReportes.triggered.connect(self.abrir_reportes)
+        self.btnSalir.clicked.connect(self.close)
+        for opcion, boton, abrir in (
+                (self.actionCiudad, self.btnCiudad, self.abrir_ciudad),
+                (self.actionCategoria, self.btnCategoria, self.abrir_categoria),
+                (self.actionProducto, self.btnProducto, self.abrir_producto),
+                (self.actionProveedor, self.btnProveedor, self.abrir_proveedor),
+                (self.actionProveedorProducto, self.btnProveedorProducto, self.abrir_proveedor_producto),
+                (self.actionConsultas, self.btnConsultas, self.abrir_consultas),
+                (self.actionReportes, self.btnReportes, self.abrir_reportes),
+                (self.actionUsuarios, self.btnUsuarios, self.abrir_usuarios),
+                (self.actionBitacora, self.btnBitacora, self.abrir_bitacora)):
+            opcion.triggered.connect(abrir)
+            boton.clicked.connect(abrir)
 
     def aplicar_permisos(self):
         puede_modificar = self.usuario_service.puede_modificar(self.sesion)
@@ -44,6 +48,9 @@ class VentanaMenuPrincipal(QMainWindow, Ui_VentanaMenuPrincipal):
         self.menuEntidades.setEnabled(puede_modificar)
         self.menuTransacciones.setEnabled(puede_modificar)
         self.menuAuditoria.setEnabled(es_administrador)
+        self.tarjetaEntidades.setEnabled(puede_modificar)
+        self.tarjetaTransacciones.setEnabled(puede_modificar)
+        self.tarjetaAuditoria.setEnabled(es_administrador)
 
     def abrir_ciudad(self):
         VentanaCiudad(self.sesion).exec()

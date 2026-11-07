@@ -23,9 +23,16 @@ class Ui_VentanaBitacora(object):
     def setupUi(self, VentanaBitacora):
         if not VentanaBitacora.objectName():
             VentanaBitacora.setObjectName(u"VentanaBitacora")
-        VentanaBitacora.resize(900, 580)
+        VentanaBitacora.resize(1060, 580)
         self.layoutPrincipal = QVBoxLayout(VentanaBitacora)
+        self.layoutPrincipal.setSpacing(12)
         self.layoutPrincipal.setObjectName(u"layoutPrincipal")
+        self.layoutPrincipal.setContentsMargins(24, 20, 24, 20)
+        self.lblEncabezado = QLabel(VentanaBitacora)
+        self.lblEncabezado.setObjectName(u"lblEncabezado")
+
+        self.layoutPrincipal.addWidget(self.lblEncabezado)
+
         self.lblResultados = QLabel(VentanaBitacora)
         self.lblResultados.setObjectName(u"lblResultados")
 
@@ -36,7 +43,11 @@ class Ui_VentanaBitacora(object):
         self.tblBitacora.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
         self.tblBitacora.setSelectionMode(QAbstractItemView.SelectionMode.SingleSelection)
         self.tblBitacora.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
+        self.tblBitacora.setAlternatingRowColors(True)
+        self.tblBitacora.setShowGrid(False)
+        self.tblBitacora.horizontalHeader().setDefaultSectionSize(150)
         self.tblBitacora.horizontalHeader().setStretchLastSection(True)
+        self.tblBitacora.verticalHeader().setVisible(False)
 
         self.layoutPrincipal.addWidget(self.tblBitacora)
 
@@ -65,6 +76,7 @@ class Ui_VentanaBitacora(object):
 
     def retranslateUi(self, VentanaBitacora):
         VentanaBitacora.setWindowTitle(QCoreApplication.translate("VentanaBitacora", u"Bit\u00e1cora de entradas y salidas", None))
+        self.lblEncabezado.setText(QCoreApplication.translate("VentanaBitacora", u"Bit\u00e1cora de entradas y salidas", None))
         self.btnActualizar.setText(QCoreApplication.translate("VentanaBitacora", u"Actualizar", None))
         self.btnCerrar.setText(QCoreApplication.translate("VentanaBitacora", u"Cerrar", None))
     # retranslateUi

@@ -26,9 +26,18 @@ class Ui_VentanaDetalleProveedorProducto(object):
             VentanaDetalleProveedorProducto.setObjectName(u"VentanaDetalleProveedorProducto")
         VentanaDetalleProveedorProducto.resize(800, 560)
         self.layoutPrincipal = QVBoxLayout(VentanaDetalleProveedorProducto)
+        self.layoutPrincipal.setSpacing(12)
         self.layoutPrincipal.setObjectName(u"layoutPrincipal")
+        self.layoutPrincipal.setContentsMargins(24, 20, 24, 20)
+        self.lblEncabezado = QLabel(VentanaDetalleProveedorProducto)
+        self.lblEncabezado.setObjectName(u"lblEncabezado")
+
+        self.layoutPrincipal.addWidget(self.lblEncabezado)
+
         self.layoutFormulario = QFormLayout()
         self.layoutFormulario.setObjectName(u"layoutFormulario")
+        self.layoutFormulario.setHorizontalSpacing(14)
+        self.layoutFormulario.setVerticalSpacing(10)
         self.lblProveedor = QLabel(VentanaDetalleProveedorProducto)
         self.lblProveedor.setObjectName(u"lblProveedor")
 
@@ -125,7 +134,11 @@ class Ui_VentanaDetalleProveedorProducto(object):
         self.tblDetalles.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
         self.tblDetalles.setSelectionMode(QAbstractItemView.SelectionMode.SingleSelection)
         self.tblDetalles.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
+        self.tblDetalles.setAlternatingRowColors(True)
+        self.tblDetalles.setShowGrid(False)
+        self.tblDetalles.horizontalHeader().setDefaultSectionSize(150)
         self.tblDetalles.horizontalHeader().setStretchLastSection(True)
+        self.tblDetalles.verticalHeader().setVisible(False)
 
         self.layoutPrincipal.addWidget(self.tblDetalles)
 
@@ -137,6 +150,7 @@ class Ui_VentanaDetalleProveedorProducto(object):
 
     def retranslateUi(self, VentanaDetalleProveedorProducto):
         VentanaDetalleProveedorProducto.setWindowTitle(QCoreApplication.translate("VentanaDetalleProveedorProducto", u"Proveedor - Producto", None))
+        self.lblEncabezado.setText(QCoreApplication.translate("VentanaDetalleProveedorProducto", u"Proveedor - Producto", None))
         self.lblProveedor.setText(QCoreApplication.translate("VentanaDetalleProveedorProducto", u"Proveedor:", None))
         self.lblProducto.setText(QCoreApplication.translate("VentanaDetalleProveedorProducto", u"Producto:", None))
         self.lblFecha.setText(QCoreApplication.translate("VentanaDetalleProveedorProducto", u"Fecha de registro:", None))

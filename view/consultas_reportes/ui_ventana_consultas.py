@@ -24,11 +24,20 @@ class Ui_VentanaConsultas(object):
     def setupUi(self, VentanaConsultas):
         if not VentanaConsultas.objectName():
             VentanaConsultas.setObjectName(u"VentanaConsultas")
-        VentanaConsultas.resize(900, 560)
+        VentanaConsultas.resize(1060, 560)
         self.layoutPrincipal = QVBoxLayout(VentanaConsultas)
+        self.layoutPrincipal.setSpacing(12)
         self.layoutPrincipal.setObjectName(u"layoutPrincipal")
+        self.layoutPrincipal.setContentsMargins(24, 20, 24, 20)
+        self.lblEncabezado = QLabel(VentanaConsultas)
+        self.lblEncabezado.setObjectName(u"lblEncabezado")
+
+        self.layoutPrincipal.addWidget(self.lblEncabezado)
+
         self.layoutFormulario = QFormLayout()
         self.layoutFormulario.setObjectName(u"layoutFormulario")
+        self.layoutFormulario.setHorizontalSpacing(14)
+        self.layoutFormulario.setVerticalSpacing(10)
         self.lblConsulta = QLabel(VentanaConsultas)
         self.lblConsulta.setObjectName(u"lblConsulta")
 
@@ -52,7 +61,11 @@ class Ui_VentanaConsultas(object):
         self.tblResultados.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
         self.tblResultados.setSelectionMode(QAbstractItemView.SelectionMode.SingleSelection)
         self.tblResultados.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
+        self.tblResultados.setAlternatingRowColors(True)
+        self.tblResultados.setShowGrid(False)
+        self.tblResultados.horizontalHeader().setDefaultSectionSize(150)
         self.tblResultados.horizontalHeader().setStretchLastSection(True)
+        self.tblResultados.verticalHeader().setVisible(False)
 
         self.layoutPrincipal.addWidget(self.tblResultados)
 
@@ -70,6 +83,7 @@ class Ui_VentanaConsultas(object):
 
     def retranslateUi(self, VentanaConsultas):
         VentanaConsultas.setWindowTitle(QCoreApplication.translate("VentanaConsultas", u"Consultas", None))
+        self.lblEncabezado.setText(QCoreApplication.translate("VentanaConsultas", u"Consultas", None))
         self.lblConsulta.setText(QCoreApplication.translate("VentanaConsultas", u"Consulta:", None))
         self.btnCerrar.setText(QCoreApplication.translate("VentanaConsultas", u"Cerrar", None))
     # retranslateUi

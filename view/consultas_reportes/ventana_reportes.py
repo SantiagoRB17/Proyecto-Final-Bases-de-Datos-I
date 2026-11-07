@@ -9,6 +9,7 @@ from dao.ProveedorDAO import ProveedorDAO
 from dao.ReportesDAO import ReportesDAO
 from service.ReportePdfService import ReportePdfService
 from view.consultas_reportes.ui_ventana_reportes import Ui_VentanaReportes
+from view.tema import ajustar_tabla
 
 
 class VentanaReportes(QDialog, Ui_VentanaReportes):
@@ -131,6 +132,7 @@ class VentanaReportes(QDialog, Ui_VentanaReportes):
         for numero_fila, fila in enumerate(self.filas):
             for numero_columna, texto in enumerate(fila):
                 self.tblResultados.setItem(numero_fila, numero_columna, QTableWidgetItem(texto))
+        ajustar_tabla(self.tblResultados)
         self.lblResultados.setText(f"Resultados: {len(self.filas)}")
         self.btnExportar.setEnabled(True)
 

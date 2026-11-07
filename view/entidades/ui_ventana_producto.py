@@ -27,9 +27,18 @@ class Ui_VentanaProducto(object):
             VentanaProducto.setObjectName(u"VentanaProducto")
         VentanaProducto.resize(800, 560)
         self.layoutPrincipal = QVBoxLayout(VentanaProducto)
+        self.layoutPrincipal.setSpacing(12)
         self.layoutPrincipal.setObjectName(u"layoutPrincipal")
+        self.layoutPrincipal.setContentsMargins(24, 20, 24, 20)
+        self.lblEncabezado = QLabel(VentanaProducto)
+        self.lblEncabezado.setObjectName(u"lblEncabezado")
+
+        self.layoutPrincipal.addWidget(self.lblEncabezado)
+
         self.layoutFormulario = QFormLayout()
         self.layoutFormulario.setObjectName(u"layoutFormulario")
+        self.layoutFormulario.setHorizontalSpacing(14)
+        self.layoutFormulario.setVerticalSpacing(10)
         self.lblNombre = QLabel(VentanaProducto)
         self.lblNombre.setObjectName(u"lblNombre")
 
@@ -142,7 +151,11 @@ class Ui_VentanaProducto(object):
         self.tblProductos.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
         self.tblProductos.setSelectionMode(QAbstractItemView.SelectionMode.SingleSelection)
         self.tblProductos.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
+        self.tblProductos.setAlternatingRowColors(True)
+        self.tblProductos.setShowGrid(False)
+        self.tblProductos.horizontalHeader().setDefaultSectionSize(150)
         self.tblProductos.horizontalHeader().setStretchLastSection(True)
+        self.tblProductos.verticalHeader().setVisible(False)
 
         self.layoutPrincipal.addWidget(self.tblProductos)
 
@@ -154,6 +167,7 @@ class Ui_VentanaProducto(object):
 
     def retranslateUi(self, VentanaProducto):
         VentanaProducto.setWindowTitle(QCoreApplication.translate("VentanaProducto", u"Productos", None))
+        self.lblEncabezado.setText(QCoreApplication.translate("VentanaProducto", u"Productos", None))
         self.lblNombre.setText(QCoreApplication.translate("VentanaProducto", u"Nombre:", None))
         self.lblDescripcion.setText(QCoreApplication.translate("VentanaProducto", u"Descripci\u00f3n:", None))
         self.lblPrecio.setText(QCoreApplication.translate("VentanaProducto", u"Precio:", None))

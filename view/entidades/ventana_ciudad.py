@@ -4,6 +4,7 @@ from dao.CiudadDAO import CiudadDAO
 from model.Ciudad import Ciudad
 from service.UsuarioService import UsuarioService
 from view.entidades.ui_ventana_ciudad import Ui_VentanaCiudad
+from view.tema import ajustar_tabla
 
 
 class VentanaCiudad(QDialog, Ui_VentanaCiudad):
@@ -41,6 +42,7 @@ class VentanaCiudad(QDialog, Ui_VentanaCiudad):
             self.tblCiudades.setItem(fila, 0, QTableWidgetItem(str(ciudad.IDCiudad)))
             self.tblCiudades.setItem(fila, 1, QTableWidgetItem(ciudad.CiuNombre))
             self.tblCiudades.setItem(fila, 2, QTableWidgetItem(ciudad.CiuDepartamento))
+        ajustar_tabla(self.tblCiudades)
 
     def seleccionar_fila(self):
         filas = self.tblCiudades.selectionModel().selectedRows()

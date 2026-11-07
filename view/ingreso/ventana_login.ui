@@ -1,75 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>VentanaLogin</class>
- <widget class="QDialog" name="VentanaLogin">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>380</width>
-    <height>220</height>
-   </rect>
-  </property>
-  <property name="windowTitle">
-   <string>Ingreso al sistema</string>
-  </property>
-  <layout class="QVBoxLayout" name="layoutPrincipal">
-   <item>
-    <widget class="QLabel" name="lblTitulo">
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Gestión de Proveedores y Productos</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignmentFlag::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <layout class="QFormLayout" name="layoutFormulario">
-     <item row="0" column="0">
-      <widget class="QLabel" name="lblUsuario">
-       <property name="text">
-        <string>Usuario:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="txtUsuario"/>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="lblContrasena">
-       <property name="text">
-        <string>Contraseña:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QLineEdit" name="txtContrasena">
-       <property name="echoMode">
-        <enum>QLineEdit::EchoMode::Password</enum>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <widget class="QPushButton" name="btnIngresar">
-     <property name="text">
-      <string>Ingresar</string>
-     </property>
-     <property name="default">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-  </layout>
- </widget>
- <resources/>
- <connections/>
+<class>VentanaLogin</class>
+<widget class="QDialog" name="VentanaLogin">
+<property name="geometry"><rect><x>0</x><y>0</y><width>780</width><height>460</height></rect></property>
+<property name="windowTitle"><string>Ingreso al sistema</string></property>
+<layout class="QHBoxLayout" name="layoutPrincipal">
+<property name="spacing"><number>0</number></property><property name="leftMargin"><number>0</number></property><property name="topMargin"><number>0</number></property><property name="rightMargin"><number>0</number></property><property name="bottomMargin"><number>0</number></property>
+<item>
+<widget class="QFrame" name="frameMarca">
+<property name="minimumSize"><size><width>320</width><height>0</height></size></property>
+<property name="maximumSize"><size><width>320</width><height>16777215</height></size></property>
+<layout class="QVBoxLayout" name="layoutMarca">
+<property name="spacing"><number>12</number></property><property name="leftMargin"><number>36</number></property><property name="topMargin"><number>36</number></property><property name="rightMargin"><number>36</number></property><property name="bottomMargin"><number>36</number></property>
+<item><spacer name="espaciadorMarcaArriba"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property></spacer></item>
+<item><widget class="QLabel" name="lblMarcaTitulo"><property name="text"><string>Gestión de Proveedores y Productos</string></property><property name="wordWrap"><bool>true</bool></property></widget></item>
+<item><widget class="QLabel" name="lblMarcaTexto"><property name="text"><string>Proyecto final de Bases de Datos I</string></property><property name="wordWrap"><bool>true</bool></property></widget></item>
+<item><spacer name="espaciadorMarcaAbajo"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property></spacer></item>
+</layout>
+</widget>
+</item>
+<item>
+<widget class="QWidget" name="widgetFormulario">
+<layout class="QVBoxLayout" name="layoutFormulario">
+<property name="spacing"><number>8</number></property><property name="leftMargin"><number>48</number></property><property name="topMargin"><number>40</number></property><property name="rightMargin"><number>48</number></property><property name="bottomMargin"><number>40</number></property>
+<item><spacer name="espaciadorFormularioArriba"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property></spacer></item>
+<item><widget class="QLabel" name="lblLoginTitulo"><property name="text"><string>Bienvenido</string></property></widget></item>
+<item><widget class="QLabel" name="lblLoginTexto"><property name="text"><string>Inicie sesión para continuar</string></property></widget></item>
+<item><spacer name="espaciadorTitulo"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>12</height></size></property></spacer></item>
+<item><widget class="QLabel" name="lblUsuario"><property name="text"><string>Usuario</string></property></widget></item>
+<item><widget class="QLineEdit" name="txtUsuario"><property name="placeholderText"><string>Su nombre de usuario</string></property></widget></item>
+<item><spacer name="espaciadorCampos"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>6</height></size></property></spacer></item>
+<item><widget class="QLabel" name="lblContrasena"><property name="text"><string>Contraseña</string></property></widget></item>
+<item><widget class="QLineEdit" name="txtContrasena"><property name="echoMode"><enum>QLineEdit::EchoMode::Password</enum></property><property name="placeholderText"><string>Su contraseña</string></property></widget></item>
+<item><spacer name="espaciadorBoton"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>16</height></size></property></spacer></item>
+<item><widget class="QPushButton" name="btnIngresar"><property name="text"><string>Ingresar</string></property><property name="default"><bool>true</bool></property></widget></item>
+<item><spacer name="espaciadorFormularioAbajo"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property></spacer></item>
+</layout>
+</widget>
+</item>
+</layout>
+</widget>
+<resources/>
+<connections/>
 </ui>

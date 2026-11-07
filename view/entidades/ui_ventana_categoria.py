@@ -26,9 +26,18 @@ class Ui_VentanaCategoria(object):
             VentanaCategoria.setObjectName(u"VentanaCategoria")
         VentanaCategoria.resize(640, 560)
         self.layoutPrincipal = QVBoxLayout(VentanaCategoria)
+        self.layoutPrincipal.setSpacing(12)
         self.layoutPrincipal.setObjectName(u"layoutPrincipal")
+        self.layoutPrincipal.setContentsMargins(24, 20, 24, 20)
+        self.lblEncabezado = QLabel(VentanaCategoria)
+        self.lblEncabezado.setObjectName(u"lblEncabezado")
+
+        self.layoutPrincipal.addWidget(self.lblEncabezado)
+
         self.layoutFormulario = QFormLayout()
         self.layoutFormulario.setObjectName(u"layoutFormulario")
+        self.layoutFormulario.setHorizontalSpacing(14)
+        self.layoutFormulario.setVerticalSpacing(10)
         self.lblNombre = QLabel(VentanaCategoria)
         self.lblNombre.setObjectName(u"lblNombre")
 
@@ -102,7 +111,11 @@ class Ui_VentanaCategoria(object):
         self.tblCategorias.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
         self.tblCategorias.setSelectionMode(QAbstractItemView.SelectionMode.SingleSelection)
         self.tblCategorias.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
+        self.tblCategorias.setAlternatingRowColors(True)
+        self.tblCategorias.setShowGrid(False)
+        self.tblCategorias.horizontalHeader().setDefaultSectionSize(150)
         self.tblCategorias.horizontalHeader().setStretchLastSection(True)
+        self.tblCategorias.verticalHeader().setVisible(False)
 
         self.layoutPrincipal.addWidget(self.tblCategorias)
 
@@ -114,6 +127,7 @@ class Ui_VentanaCategoria(object):
 
     def retranslateUi(self, VentanaCategoria):
         VentanaCategoria.setWindowTitle(QCoreApplication.translate("VentanaCategoria", u"Categor\u00edas", None))
+        self.lblEncabezado.setText(QCoreApplication.translate("VentanaCategoria", u"Categor\u00edas", None))
         self.lblNombre.setText(QCoreApplication.translate("VentanaCategoria", u"Nombre:", None))
         self.lblDescripcion.setText(QCoreApplication.translate("VentanaCategoria", u"Descripci\u00f3n:", None))
         self.btnNuevo.setText(QCoreApplication.translate("VentanaCategoria", u"Nuevo", None))

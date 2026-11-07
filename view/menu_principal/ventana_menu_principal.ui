@@ -6,25 +6,54 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>500</height>
+    <width>1040</width>
+    <height>700</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Menú principal</string>
+   <string>Gestión de Proveedores y Productos</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="layoutCentral">
+    <property name="spacing"><number>0</number></property><property name="leftMargin"><number>0</number></property><property name="topMargin"><number>0</number></property><property name="rightMargin"><number>0</number></property><property name="bottomMargin"><number>0</number></property>
     <item>
-     <widget class="QLabel" name="lblBienvenida">
-      <property name="font">
-       <font>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignCenter</set>
-      </property>
+     <widget class="QFrame" name="frameEncabezado">
+      <property name="minimumSize"><size><width>0</width><height>110</height></size></property>
+      <property name="maximumSize"><size><width>16777215</width><height>110</height></size></property>
+      <layout class="QHBoxLayout" name="layoutEncabezado">
+       <property name="spacing"><number>12</number></property><property name="leftMargin"><number>36</number></property><property name="topMargin"><number>20</number></property><property name="rightMargin"><number>36</number></property><property name="bottomMargin"><number>20</number></property>
+       <item>
+        <layout class="QVBoxLayout" name="layoutTitulos">
+         <property name="spacing"><number>4</number></property>
+         <item><widget class="QLabel" name="lblTituloApp"><property name="text"><string>Gestión de Proveedores y Productos</string></property></widget></item>
+         <item><widget class="QLabel" name="lblBienvenida"><property name="text"><string></string></property></widget></item>
+        </layout>
+       </item>
+       <item><spacer name="espaciadorEncabezado"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+       <item alignment="Qt::AlignRight|Qt::AlignVCenter"><widget class="QLabel" name="lblRol"><property name="text"><string></string></property></widget></item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="widgetCuerpo">
+      <layout class="QVBoxLayout" name="layoutCuerpo">
+       <property name="spacing"><number>18</number></property><property name="leftMargin"><number>36</number></property><property name="topMargin"><number>28</number></property><property name="rightMargin"><number>36</number></property><property name="bottomMargin"><number>24</number></property>
+       <item><widget class="QLabel" name="lblSeccion"><property name="text"><string>¿Qué desea hacer?</string></property></widget></item>
+       <item>
+        <layout class="QGridLayout" name="gridTarjetas">
+         <property name="horizontalSpacing"><number>20</number></property>
+         <property name="verticalSpacing"><number>20</number></property>
+         <item row="0" column="0"><widget class="QFrame" name="tarjetaEntidades"><property name="tarjeta" stdset="0"><bool>true</bool></property><layout class="QVBoxLayout" name="layouttarjetaEntidades"><property name="spacing"><number>10</number></property><property name="leftMargin"><number>22</number></property><property name="topMargin"><number>20</number></property><property name="rightMargin"><number>22</number></property><property name="bottomMargin"><number>22</number></property><item><widget class="QLabel" name="lblTituloEntidades"><property name="text"><string>Entidades</string></property><property name="tarjetaTitulo" stdset="0"><bool>true</bool></property></widget></item><item><widget class="QLabel" name="lblTextoEntidades"><property name="text"><string>Registre y mantenga ciudades, categorías, productos y proveedores.</string></property><property name="tarjetaTexto" stdset="0"><bool>true</bool></property><property name="wordWrap"><bool>true</bool></property></widget></item><item><layout class="QGridLayout" name="gridtarjetaEntidades"><property name="horizontalSpacing"><number>10</number></property><property name="verticalSpacing"><number>10</number></property><item row="0" column="0"><widget class="QPushButton" name="btnCiudad"><property name="text"><string>Ciudades</string></property><property name="autoDefault"><bool>false</bool></property><property name="tarjetaBoton" stdset="0"><bool>true</bool></property></widget></item><item row="0" column="1"><widget class="QPushButton" name="btnCategoria"><property name="text"><string>Categorías</string></property><property name="autoDefault"><bool>false</bool></property><property name="tarjetaBoton" stdset="0"><bool>true</bool></property></widget></item><item row="1" column="0"><widget class="QPushButton" name="btnProducto"><property name="text"><string>Productos</string></property><property name="autoDefault"><bool>false</bool></property><property name="tarjetaBoton" stdset="0"><bool>true</bool></property></widget></item><item row="1" column="1"><widget class="QPushButton" name="btnProveedor"><property name="text"><string>Proveedores</string></property><property name="autoDefault"><bool>false</bool></property><property name="tarjetaBoton" stdset="0"><bool>true</bool></property></widget></item></layout></item><item><spacer name="espaciadortarjetaEntidades"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property></spacer></item></layout></widget></item><item row="0" column="1"><widget class="QFrame" name="tarjetaTransacciones"><property name="tarjeta" stdset="0"><bool>true</bool></property><layout class="QVBoxLayout" name="layouttarjetaTransacciones"><property name="spacing"><number>10</number></property><property name="leftMargin"><number>22</number></property><property name="topMargin"><number>20</number></property><property name="rightMargin"><number>22</number></property><property name="bottomMargin"><number>22</number></property><item><widget class="QLabel" name="lblTituloTransacciones"><property name="text"><string>Transacciones</string></property><property name="tarjetaTitulo" stdset="0"><bool>true</bool></property></widget></item><item><widget class="QLabel" name="lblTextoTransacciones"><property name="text"><string>Defina qué proveedor ofrece cada producto y a qué precio.</string></property><property name="tarjetaTexto" stdset="0"><bool>true</bool></property><property name="wordWrap"><bool>true</bool></property></widget></item><item><layout class="QGridLayout" name="gridtarjetaTransacciones"><property name="horizontalSpacing"><number>10</number></property><property name="verticalSpacing"><number>10</number></property><item row="0" column="0"><widget class="QPushButton" name="btnProveedorProducto"><property name="text"><string>Proveedor - Producto</string></property><property name="autoDefault"><bool>false</bool></property><property name="tarjetaBoton" stdset="0"><bool>true</bool></property></widget></item></layout></item><item><spacer name="espaciadortarjetaTransacciones"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property></spacer></item></layout></widget></item><item row="1" column="0"><widget class="QFrame" name="tarjetaConsultas"><property name="tarjeta" stdset="0"><bool>true</bool></property><layout class="QVBoxLayout" name="layouttarjetaConsultas"><property name="spacing"><number>10</number></property><property name="leftMargin"><number>22</number></property><property name="topMargin"><number>20</number></property><property name="rightMargin"><number>22</number></property><property name="bottomMargin"><number>22</number></property><item><widget class="QLabel" name="lblTituloConsultas"><property name="text"><string>Consultas y Reportes</string></property><property name="tarjetaTitulo" stdset="0"><bool>true</bool></property></widget></item><item><widget class="QLabel" name="lblTextoConsultas"><property name="text"><string>Consulte la información y exporte reportes en PDF.</string></property><property name="tarjetaTexto" stdset="0"><bool>true</bool></property><property name="wordWrap"><bool>true</bool></property></widget></item><item><layout class="QGridLayout" name="gridtarjetaConsultas"><property name="horizontalSpacing"><number>10</number></property><property name="verticalSpacing"><number>10</number></property><item row="0" column="0"><widget class="QPushButton" name="btnConsultas"><property name="text"><string>Consultas</string></property><property name="autoDefault"><bool>false</bool></property><property name="tarjetaBoton" stdset="0"><bool>true</bool></property></widget></item><item row="0" column="1"><widget class="QPushButton" name="btnReportes"><property name="text"><string>Reportes</string></property><property name="autoDefault"><bool>false</bool></property><property name="tarjetaBoton" stdset="0"><bool>true</bool></property></widget></item></layout></item><item><spacer name="espaciadortarjetaConsultas"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property></spacer></item></layout></widget></item><item row="1" column="1"><widget class="QFrame" name="tarjetaAuditoria"><property name="tarjeta" stdset="0"><bool>true</bool></property><layout class="QVBoxLayout" name="layouttarjetaAuditoria"><property name="spacing"><number>10</number></property><property name="leftMargin"><number>22</number></property><property name="topMargin"><number>20</number></property><property name="rightMargin"><number>22</number></property><property name="bottomMargin"><number>22</number></property><item><widget class="QLabel" name="lblTituloAuditoria"><property name="text"><string>Auditoría</string></property><property name="tarjetaTitulo" stdset="0"><bool>true</bool></property></widget></item><item><widget class="QLabel" name="lblTextoAuditoria"><property name="text"><string>Gestione los usuarios y revise los ingresos al sistema.</string></property><property name="tarjetaTexto" stdset="0"><bool>true</bool></property><property name="wordWrap"><bool>true</bool></property></widget></item><item><layout class="QGridLayout" name="gridtarjetaAuditoria"><property name="horizontalSpacing"><number>10</number></property><property name="verticalSpacing"><number>10</number></property><item row="0" column="0"><widget class="QPushButton" name="btnUsuarios"><property name="text"><string>Gestión de usuarios</string></property><property name="autoDefault"><bool>false</bool></property><property name="tarjetaBoton" stdset="0"><bool>true</bool></property></widget></item><item row="0" column="1"><widget class="QPushButton" name="btnBitacora"><property name="text"><string>Bitácora</string></property><property name="autoDefault"><bool>false</bool></property><property name="tarjetaBoton" stdset="0"><bool>true</bool></property></widget></item></layout></item><item><spacer name="espaciadortarjetaAuditoria"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property></spacer></item></layout></widget></item>
+        </layout>
+       </item>
+       <item><spacer name="espaciadorCuerpo"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property></spacer></item>
+       <item>
+        <layout class="QHBoxLayout" name="layoutSalir">
+         <item><spacer name="espaciadorSalir"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+         <item><widget class="QPushButton" name="btnSalir"><property name="text"><string>Cerrar sesión</string></property><property name="autoDefault"><bool>false</bool></property></widget></item>
+        </layout>
+       </item>
+      </layout>
      </widget>
     </item>
    </layout>

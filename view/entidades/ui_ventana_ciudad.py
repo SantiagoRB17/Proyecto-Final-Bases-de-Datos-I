@@ -26,9 +26,18 @@ class Ui_VentanaCiudad(object):
             VentanaCiudad.setObjectName(u"VentanaCiudad")
         VentanaCiudad.resize(640, 480)
         self.layoutPrincipal = QVBoxLayout(VentanaCiudad)
+        self.layoutPrincipal.setSpacing(12)
         self.layoutPrincipal.setObjectName(u"layoutPrincipal")
+        self.layoutPrincipal.setContentsMargins(24, 20, 24, 20)
+        self.lblEncabezado = QLabel(VentanaCiudad)
+        self.lblEncabezado.setObjectName(u"lblEncabezado")
+
+        self.layoutPrincipal.addWidget(self.lblEncabezado)
+
         self.layoutFormulario = QFormLayout()
         self.layoutFormulario.setObjectName(u"layoutFormulario")
+        self.layoutFormulario.setHorizontalSpacing(14)
+        self.layoutFormulario.setVerticalSpacing(10)
         self.lblNombre = QLabel(VentanaCiudad)
         self.lblNombre.setObjectName(u"lblNombre")
 
@@ -102,7 +111,11 @@ class Ui_VentanaCiudad(object):
         self.tblCiudades.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
         self.tblCiudades.setSelectionMode(QAbstractItemView.SelectionMode.SingleSelection)
         self.tblCiudades.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
+        self.tblCiudades.setAlternatingRowColors(True)
+        self.tblCiudades.setShowGrid(False)
+        self.tblCiudades.horizontalHeader().setDefaultSectionSize(150)
         self.tblCiudades.horizontalHeader().setStretchLastSection(True)
+        self.tblCiudades.verticalHeader().setVisible(False)
 
         self.layoutPrincipal.addWidget(self.tblCiudades)
 
@@ -114,6 +127,7 @@ class Ui_VentanaCiudad(object):
 
     def retranslateUi(self, VentanaCiudad):
         VentanaCiudad.setWindowTitle(QCoreApplication.translate("VentanaCiudad", u"Ciudades", None))
+        self.lblEncabezado.setText(QCoreApplication.translate("VentanaCiudad", u"Ciudades", None))
         self.lblNombre.setText(QCoreApplication.translate("VentanaCiudad", u"Nombre:", None))
         self.lblDepartamento.setText(QCoreApplication.translate("VentanaCiudad", u"Departamento:", None))
         self.btnNuevo.setText(QCoreApplication.translate("VentanaCiudad", u"Nuevo", None))

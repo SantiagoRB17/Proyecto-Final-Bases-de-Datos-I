@@ -5,6 +5,7 @@ from PySide6.QtWidgets import QDialog, QMessageBox, QTableWidgetItem
 from dao.ConsultasDAO import ConsultasDAO
 from service.UsuarioService import UsuarioService
 from view.consultas_reportes.ui_ventana_consultas import Ui_VentanaConsultas
+from view.tema import ajustar_tabla
 
 
 class VentanaConsultas(QDialog, Ui_VentanaConsultas):
@@ -46,6 +47,7 @@ class VentanaConsultas(QDialog, Ui_VentanaConsultas):
         for numero_fila, fila in enumerate(filas):
             for numero_columna, valor in enumerate(fila):
                 self.tblResultados.setItem(numero_fila, numero_columna, QTableWidgetItem(self._a_texto(valor)))
+        ajustar_tabla(self.tblResultados)
         self.lblResultados.setText(f"Resultados: {len(filas)}")
 
     def _a_texto(self, valor):
