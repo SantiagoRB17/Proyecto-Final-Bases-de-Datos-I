@@ -11,8 +11,9 @@ class ConsultasDAO:
     def proveedores_con_ciudad_y_productos(self):
         # Proveedor + Ciudad + DetalleProveedorProducto + Producto
         sql = """
-            SELECT prov.ProvNombre, ciu.CiuNombre, ciu.CiuDepartamento,
-                   prod.ProdNombre, det.DePrecioProveedor
+            SELECT prov.ProvNombre AS Proveedor, ciu.CiuNombre AS Ciudad,
+                   ciu.CiuDepartamento AS Departamento, prod.ProdNombre AS Producto,
+                   det.DePrecioProveedor AS [Precio del proveedor]
             FROM Proveedor prov
             INNER JOIN Ciudad ciu ON ciu.IDCiudad = prov.IDCiudad
             INNER JOIN DetalleProveedorProducto det ON det.IDProveedor = prov.IDProveedor
@@ -24,8 +25,9 @@ class ConsultasDAO:
     def productos_con_categoria_y_proveedores(self):
         # Producto + Categoria + DetalleProveedorProducto + Proveedor
         sql = """
-            SELECT prod.ProdNombre, cat.CatNombre, prov.ProvNombre,
-                   det.DePrecioProveedor, det.DeFechaRegistro
+            SELECT prod.ProdNombre AS Producto, cat.CatNombre AS [Categoría],
+                   prov.ProvNombre AS Proveedor, det.DePrecioProveedor AS [Precio del proveedor],
+                   det.DeFechaRegistro AS [Fecha de registro]
             FROM Producto prod
             INNER JOIN Categoria cat ON cat.IDCategoria = prod.IDCategoria
             INNER JOIN DetalleProveedorProducto det ON det.IDProducto = prod.IDProducto
@@ -37,8 +39,10 @@ class ConsultasDAO:
     def bitacora_con_usuario_y_rol(self):
         # Bitacora + Usuario + TipoUsuario
         sql = """
-            SELECT usr.UsrNombreUsuario, usr.UsrNombres, usr.UsrApellidos, tip.TipNombre,
-                   bit.BitFechaIngreso, bit.BitHoraIngreso, bit.BitFechaSalida, bit.BitHoraSalida
+            SELECT usr.UsrNombreUsuario AS Usuario, usr.UsrNombres AS Nombres,
+                   usr.UsrApellidos AS Apellidos, tip.TipNombre AS Rol,
+                   bit.BitFechaIngreso AS [Fecha de ingreso], bit.BitHoraIngreso AS [Hora de ingreso],
+                   bit.BitFechaSalida AS [Fecha de salida], bit.BitHoraSalida AS [Hora de salida]
             FROM Bitacora bit
             INNER JOIN Usuario usr ON usr.IDUsuario = bit.IDUsuario
             INNER JOIN TipoUsuario tip ON tip.IDTipoUsuario = usr.IDTipoUsuario
@@ -51,7 +55,7 @@ class ConsultasDAO:
     def proveedores_sin_productos(self):
         # Proveedor + DetalleProveedorProducto: proveedores que aún no proveen nada.
         sql = """
-            SELECT ProvNit, ProvNombre, ProvTelefono
+            SELECT ProvNit AS NIT, ProvNombre AS Proveedor, ProvTelefono AS [Teléfono]
             FROM Proveedor
             WHERE IDProveedor NOT IN (SELECT IDProveedor FROM DetalleProveedorProducto)
             ORDER BY ProvNombre
@@ -61,9 +65,9 @@ class ConsultasDAO:
     def categorias_con_cantidad_de_productos(self):
         # Categoria + Producto: subconsulta correlacionada que cuenta los productos.
         sql = """
-            SELECT cat.CatNombre,
+            SELECT cat.CatNombre AS [Categoría],
                    (SELECT COUNT(*) FROM Producto prod
-                    WHERE prod.IDCategoria = cat.IDCategoria) AS CantidadProductos
+                    WHERE prod.IDCategoria = cat.IDCategoria) AS [Cantidad de productos]
             FROM Categoria cat
             ORDER BY cat.CatNombre
         """
