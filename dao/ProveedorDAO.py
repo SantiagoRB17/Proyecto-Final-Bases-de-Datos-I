@@ -20,6 +20,10 @@ class ProveedorDAO:
             proveedor.IDProveedor = cursor.fetchval()
             conexion.commit()
             return proveedor
+        except pyodbc.IntegrityError as error:
+            if "UQ_Proveedor_ProvNit" in str(error):
+                raise ValueError("Ya existe un proveedor con ese NIT.")
+            raise
         finally:
             conexion.close()
 
@@ -65,6 +69,10 @@ class ProveedorDAO:
                                  proveedor.ProvTelefono, proveedor.ProvEmail, proveedor.IDCiudad,
                                  proveedor.IDProveedor))
             conexion.commit()
+        except pyodbc.IntegrityError as error:
+            if "UQ_Proveedor_ProvNit" in str(error):
+                raise ValueError("Ya existe un proveedor con ese NIT.")
+            raise
         finally:
             conexion.close()
 
