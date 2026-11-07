@@ -60,6 +60,10 @@ class VentanaCategoria(QDialog, Ui_VentanaCategoria):
         self.txtNombre.setFocus()
 
     def agregar(self):
+        if self.id_seleccionado is not None:
+            QMessageBox.warning(self, "Categorías",
+                                "Presione Nuevo para registrar otra categoría, o Editar para guardar los cambios.")
+            return
         categoria = self._leer_formulario()
         if categoria is None:
             return
