@@ -4,6 +4,7 @@ from service.UsuarioService import UsuarioService
 from view.auditoria.ventana_bitacora import VentanaBitacora
 from view.auditoria.ventana_usuarios import VentanaUsuarios
 from view.consultas_reportes.ventana_consultas import VentanaConsultas
+from view.consultas_reportes.ventana_reportes import VentanaReportes
 from view.entidades.ventana_categoria import VentanaCategoria
 from view.entidades.ventana_ciudad import VentanaCiudad
 from view.entidades.ventana_producto import VentanaProducto
@@ -35,7 +36,7 @@ class VentanaMenuPrincipal(QMainWindow, Ui_VentanaMenuPrincipal):
         self.actionConsultas.triggered.connect(self.abrir_consultas)
         self.actionUsuarios.triggered.connect(self.abrir_usuarios)
         self.actionBitacora.triggered.connect(self.abrir_bitacora)
-        self.actionReportes.triggered.connect(self.mostrar_pendiente)
+        self.actionReportes.triggered.connect(self.abrir_reportes)
 
     def aplicar_permisos(self):
         puede_modificar = self.usuario_service.puede_modificar(self.sesion)
@@ -66,14 +67,18 @@ class VentanaMenuPrincipal(QMainWindow, Ui_VentanaMenuPrincipal):
         except ConnectionError as error:
             QMessageBox.warning(self, "Consultas", str(error))
 
+    def abrir_reportes(self):
+        # Esta ventana consulta la base de datos desde que se crea.
+        try:
+            VentanaReportes(self.sesion).exec()
+        except ConnectionError as error:
+            QMessageBox.warning(self, "Reportes", str(error))
+
     def abrir_usuarios(self):
         VentanaUsuarios(self.sesion).exec()
 
     def abrir_bitacora(self):
         VentanaBitacora(self.sesion).exec()
-
-    def mostrar_pendiente(self):
-        QMessageBox.information(self, "Pendiente", "Esta ventana todavía no está disponible.")
 
     # Se ejecuta tanto con la opción "Salir" como con la X de la ventana.
     def closeEvent(self, evento):
