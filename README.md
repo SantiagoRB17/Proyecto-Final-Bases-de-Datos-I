@@ -73,7 +73,15 @@ Arquitectura por capas con una responsabilidad por carpeta. La vista nunca escri
 ## Modelo de datos
 
 <p align="center">
+  <img src="docs/DiagramaEntidadRelacion.png" alt="Diagrama entidad-relación" width="900"/>
+  <br/>
+  <sub>Diagrama entidad-relación (notación de Chen)</sub>
+</p>
+
+<p align="center">
   <img src="docs/DiagramaRelaci%C3%B3nProyectoFinal.png" alt="Diagrama relacional" width="760"/>
+  <br/>
+  <sub>Diagrama relacional</sub>
 </p>
 
 | Tabla | Llave primaria | Llaves foráneas | Relación |
