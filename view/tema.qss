@@ -221,6 +221,34 @@ QPushButton#btnExportar:disabled {
     border-color: #E2E8F0;
 }
 
+/* Ver PDF (vista previa dentro de la aplicación) */
+QPushButton#btnVerPdf {
+    color: #0E7C86;
+    border-color: #0E7C86;
+}
+
+QPushButton#btnVerPdf:hover {
+    background: #D5EFF1;
+}
+
+QPushButton#btnVerPdf:disabled {
+    color: #A0AEC0;
+    border-color: #E2E8F0;
+}
+
+/* ---------- Visor de PDF ---------- */
+
+QFrame#contenedorPdf {
+    background: #FFFFFF;
+    border: 1px solid #D5DBE5;
+    border-radius: 8px;
+}
+
+QLabel#lblPagina {
+    color: #64748B;
+    padding-left: 8px;
+}
+
 /* ---------- Tablas ---------- */
 
 QTableWidget {

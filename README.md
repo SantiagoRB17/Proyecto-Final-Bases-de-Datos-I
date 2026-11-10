@@ -33,7 +33,7 @@ view  ──►  service  ──►  dao  ──►  SQL Server
 - **Gestión de entidades** — ciudades, categorías, productos y proveedores con CRUD completo, validaciones (NIT único, precios mayores que cero) y mensajes claros cuando un borrado lo impide una llave foránea
 - **Transacciones** — relación proveedor–producto (N:M) con precio de cada proveedor y fecha de registro
 - **Consultas** — 5 consultas listas para usar: 3 con JOIN de varias tablas y 2 con subconsulta
-- **Reportes** — 5 reportes con filtros elegidos por el usuario, visibles en tabla y exportables a PDF
+- **Reportes** — 5 reportes con filtros elegidos por el usuario, visibles en tabla, exportables a PDF y que se abren en un **visor de PDF integrado** en la aplicación
 - **Auditoría** — gestión de usuarios (solo el Administrador) y consulta de la bitácora de entradas y salidas
 - **Roles y permisos** — Administrador, Tradicional y Esporádico, almacenados en la base de datos
 - **Interfaz propia** — tema visual fijo (no depende del tema de Windows) y menú principal por tarjetas, además de la barra de menú clásica
@@ -302,6 +302,8 @@ python main.py
 | Productos con stock bajo por categoría | Categoría, stock máximo |
 
 Cada reporte se muestra en una tabla y se exporta a un PDF horizontal con el título, los filtros aplicados, quién lo generó y cuándo, y el total de registros.
+
+El PDF se abre **dentro de la misma aplicación**: el botón **Ver PDF** muestra una vista previa en un visor integrado (zoom, número de página y *Guardar como...*) sin guardar nada en el disco, y al **Exportar a PDF** la aplicación ofrece abrir el archivo guardado en ese mismo visor.
 
 </details>
 

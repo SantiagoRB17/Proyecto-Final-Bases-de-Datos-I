@@ -1,3 +1,6 @@
+import os
+import shutil
+import tempfile
 from datetime import date, time
 
 from PySide6.QtWidgets import QDialog, QFileDialog, QMessageBox, QTableWidgetItem
@@ -9,6 +12,7 @@ from dao.ProveedorDAO import ProveedorDAO
 from dao.ReportesDAO import ReportesDAO
 from service.ReportePdfService import ReportePdfService
 from view.consultas_reportes.ui_ventana_reportes import Ui_VentanaReportes
+from view.consultas_reportes.ventana_visor_pdf import VentanaVisorPdf
 from view.tema import ajustar_tabla
 
 
@@ -44,8 +48,10 @@ class VentanaReportes(QDialog, Ui_VentanaReportes):
 
         self.cmbReporte.currentIndexChanged.connect(self.mostrar_filtros)
         self.btnGenerar.clicked.connect(self.generar)
+        self.btnVerPdf.clicked.connect(self.ver_pdf)
         self.btnExportar.clicked.connect(self.exportar_pdf)
         self.btnCerrar.clicked.connect(self.close)
+        self.btnVerPdf.setEnabled(False)
         self.btnExportar.setEnabled(False)
 
         self.cargar_combos()
@@ -123,7 +129,32 @@ class VentanaReportes(QDialog, Ui_VentanaReportes):
         except OSError as error:
             QMessageBox.warning(self, "Reportes", f"No se pudo guardar el PDF.\n{error}")
             return
-        QMessageBox.information(self, "Reportes", "El reporte se guardó correctamente.")
+        respuesta = QMessageBox.question(self, "Reportes", "El reporte se guardó correctamente.\n¿Desea abrirlo ahora?")
+        if respuesta == QMessageBox.StandardButton.Yes:
+            self._abrir_visor(ruta, titulo, None)
+
+    # Genera el PDF en una carpeta temporal solo para verlo dentro de la aplicación.
+    def ver_pdf(self):
+        titulo = self.cmbReporte.currentText()
+        carpeta = tempfile.mkdtemp(prefix="reporte_")
+        ruta = os.path.join(carpeta, titulo.replace(" ", "_") + ".pdf")
+        try:
+            self.pdf_service.exportar(ruta, titulo, self.filtros, self.encabezados, self.filas, self.sesion.usuario)
+        except OSError as error:
+            shutil.rmtree(carpeta, ignore_errors=True)
+            QMessageBox.warning(self, "Reportes", f"No se pudo generar el PDF.\n{error}")
+            return
+        self._abrir_visor(ruta, titulo, carpeta)
+
+    def _abrir_visor(self, ruta, titulo, carpeta_temporal):
+        try:
+            visor = VentanaVisorPdf(ruta, titulo, carpeta_temporal)
+        except ValueError as error:
+            if carpeta_temporal:
+                shutil.rmtree(carpeta_temporal, ignore_errors=True)
+            QMessageBox.warning(self, "Reportes", str(error))
+            return
+        visor.exec()
 
     def _mostrar_tabla(self):
         self.tblResultados.setColumnCount(len(self.encabezados))
@@ -134,6 +165,7 @@ class VentanaReportes(QDialog, Ui_VentanaReportes):
                 self.tblResultados.setItem(numero_fila, numero_columna, QTableWidgetItem(texto))
         ajustar_tabla(self.tblResultados)
         self.lblResultados.setText(f"Resultados: {len(self.filas)}")
+        self.btnVerPdf.setEnabled(True)
         self.btnExportar.setEnabled(True)
 
     # Al cambiar de reporte se borra el anterior, para no exportar uno distinto al elegido.
@@ -144,6 +176,7 @@ class VentanaReportes(QDialog, Ui_VentanaReportes):
         self.tblResultados.setRowCount(0)
         self.tblResultados.setColumnCount(0)
         self.lblResultados.setText("")
+        self.btnVerPdf.setEnabled(False)
         self.btnExportar.setEnabled(False)
 
     def _a_texto(self, valor):

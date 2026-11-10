@@ -137,6 +137,12 @@ class Ui_VentanaReportes(object):
 
         self.layoutBotones.addWidget(self.btnGenerar)
 
+        self.btnVerPdf = QPushButton(VentanaReportes)
+        self.btnVerPdf.setObjectName(u"btnVerPdf")
+        self.btnVerPdf.setAutoDefault(False)
+
+        self.layoutBotones.addWidget(self.btnVerPdf)
+
         self.btnExportar = QPushButton(VentanaReportes)
         self.btnExportar.setObjectName(u"btnExportar")
         self.btnExportar.setAutoDefault(False)
@@ -188,6 +194,7 @@ class Ui_VentanaReportes(object):
         self.lblPrecioMaximo.setText(QCoreApplication.translate("VentanaReportes", u"Precio m\u00e1ximo:", None))
         self.lblStockMaximo.setText(QCoreApplication.translate("VentanaReportes", u"Stock m\u00e1ximo:", None))
         self.btnGenerar.setText(QCoreApplication.translate("VentanaReportes", u"Generar", None))
+        self.btnVerPdf.setText(QCoreApplication.translate("VentanaReportes", u"Ver PDF", None))
         self.btnExportar.setText(QCoreApplication.translate("VentanaReportes", u"Exportar a PDF", None))
         self.btnCerrar.setText(QCoreApplication.translate("VentanaReportes", u"Cerrar", None))
     # retranslateUi
